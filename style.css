@@ -1,0 +1,36 @@
+.header {
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+}
+
+.body,
+#rangeValue {
+    display: flex;
+    justify-content: center;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    gap: 10px;
+}
+
+#grid {
+    display: grid;
+    background-color: whitesmoke;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    width: 500px;
+    height: 500px;
+    grid-template-columns: 
+    grid-template-rows: 
+}
+
+
