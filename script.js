@@ -1,10 +1,11 @@
 // defining constants
-const rangeValueHTML = document.getElementById('rangeValue')
-const gridSize = document.getElementById('gridSize')
-const defaultMode = document.getElementById('defaultMode')
-const rainbowMode = document.getElementById('rainbowMode')
-const eraserMode = document.getElementById('eraserMode')
-const clearBtn = document.getElementById('clearBtn')
+const rangeValueHTML = document.getElementById('rangeValue');
+const gridSize = document.getElementById('gridSize');
+const defaultMode = document.getElementById('defaultMode');
+const rainbowMode = document.getElementById('rainbowMode');
+const eraserMode = document.getElementById('eraserMode');
+const clearBtn = document.getElementById('clearBtn');
+const grid = document.getElementById('grid');
 
 // define size, show size on UI
 let size = document.getElementById('gridSize').value;
@@ -15,8 +16,8 @@ createGrid(size);
 
 // event listeners
 gridSize.addEventListener('click', () => { 
-    // remove colors from grid
-    clearGrid();
+    grid.innerHTML = '';
+    let size = document.getElementById('gridSize').value;
     createGrid(size);
     updateRangeValue(size);
 });
@@ -32,26 +33,25 @@ function makeRainbowColor () {
     return 'rgb('+rainbowR+', '+rainbowG+', '+rainbowB+')';
 }
 function createGrid(size) {
-    // let gridWidth = 
-    for (let i=1; i <= (size); i++) {
-        let gridBox = document.createElement('div');
-        gridBox.textContent = `${i}`;
-        gridBox.style.gridTemplateRows = `repeat(${size}, 1fr)`;
-        gridBox.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    for (let i = 1; i <= (size*size); i++) {
+        gridBox = document.createElement('div');
+        gridBox.classList.add('gridBoxes');
+        // gridBox.textContent = i;
         gridBox.addEventListener('mousedown', () => {changeColor()});
-        grid.appendChild(gridBox); 
+        grid.appendChild(gridBox);
     }
+    grid.style.gridTemplateColumns = (`repeat(${size}, 1fr)`);
+    grid.style.gridTemplateRows = (`repeat(${size}, 1fr)`);
 }
 function updateRangeValue(size) {
     size = document.getElementById('gridSize').value;
     rangeValueHTML.textContent = `${size} x ${size}`;
-    createGrid(size);
 }
 function changeColor() {
-    if (defaultMode.checked) {grid.style.backgroundColor = 'rgb(0, 0, 0)';}
-    if (rainbowMode.checked) {grid.style.backgroundColor = makeRainbowColor();}
-    if (eraserMode.checked) {grid.style.backgroundColor = 'whitesmoke';}
+    if (defaultMode.checked) {gridBox.style.backgroundColor = 'rgb(0, 0, 0)'};
+    if (rainbowMode.checked) {gridBox.style.backgroundColor = makeRainbowColor()};
+    if (eraserMode.checked)  {gridBox.style.backgroundColor = 'whitesmoke'};
 }
 function clearGrid() {
-    grid.style.backgroundColor = 'whitesmoke';
+    gridBox.style.backgroundColor = 'whitesmoke';
 }
