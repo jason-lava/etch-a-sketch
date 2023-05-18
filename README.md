@@ -1,6 +1,6 @@
 # etch-a-sketch
 
-Link: https://jlavandowski.github.io/etch-a-sketch
+Link: https://jason-lava.github.io/etch-a-sketch
 
 Skills used: HTML, CSS, JavaScript
 
